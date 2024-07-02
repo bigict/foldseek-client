@@ -79,6 +79,7 @@ def main(args):
       logger.error('%s\t%s', pdb_file, str(e))
     result = json.dumps(result)
     print(f'Foldseek\t{pdb_file}\t{result}')
+    sleep(args.sleep)
 
 if __name__ == '__main__':
   import argparse
@@ -107,6 +108,10 @@ if __name__ == '__main__':
                       default='3diaa',
                       choices=['3diaa', 'tmalign'],
                       help='model of prefilter, default=\'3diaa\'')
+  parser.add_argument('--sleep',
+                      type=int,
+                      default=10,
+                      help='sleep N seconds.')
   parser.add_argument('-v', '--verbose', action='store_true', help='verbose')
   args = parser.parse_args()
 
